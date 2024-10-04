@@ -12,7 +12,7 @@ namespace Hackatones.Shered.Entities
         [Display(Name = "identificador hackaton")]
         [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public int idHackaton { get; set; }
+        public int id_hackaton { get; set; }
 
         [Display(Name = "nombre hackaton")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
@@ -22,17 +22,17 @@ namespace Hackatones.Shered.Entities
         [Display(Name = "fecha de inicio")]
         [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public DateTime startDate { get; set; }
+        public DateTime start_date { get; set; }
 
         [Display(Name = "fecha de finalizacion")]
         [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public DateTime endDate { get; set; }
+        public DateTime end_date { get; set; }
 
         [Display(Name = "tema principal")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public string mainTopic { get; set; }
+        public string main_topic { get; set; }
 
         [Display(Name = "organizador")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]

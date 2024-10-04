@@ -7,36 +7,33 @@ using System.Threading.Tasks;
 
 namespace Hackatones.Shered.Entities
 {
-    public class Mentor
-	{	
-		[Display(Name = "identificador de mentor")]
+	public class Team
+	{
+        [Display(Name = "identificador equipo")]
         [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public int idMentor { get; set; }
-
-        [Display(Name = "nombre mentor")]
+        public int id_team { get; set; }
+        
+        //Foranea de hackaton
+        [Display(Name = "identificador hackaton")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public string name { get; set; }
+        public string id_hackaton_FK { get; set; }
 
-        [Display(Name = "apellido mentor")]
+        [Display(Name = "nombre equipo")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public string lastName { get; set; }
+        public string team_name { get; set; }
 
-        [Display(Name = "correo mentor")]
-		[MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
-		[Required(ErrorMessage = "El {0} es obligatorio")]
-		public string email { get; set; }
-
-        [Display(Name = "telefono mentor")]
+        [Display(Name = "fecha de registro")]
         [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public string phone { get; set; }
+        public DateTime registration_date { get; set; }
 
-        [Display(Name = "especialidad mentor")]
-        [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
+        [Display(Name = "numero de miembros del equipo")]
+        [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public string specialty { get; set; }
+        public int number_members { get; set; }
+
     }
 }
