@@ -9,39 +9,36 @@ namespace Hackatones.Shered.Entities
 {
     public class Hackaton
     {
-        [Display(Name = "identificador hackaton")]
-        [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
-        [Required(ErrorMessage = "El {0} es obligatorio")]
-        public int idHackaton { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "nombre hackaton")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
         public string Name { get; set; }
 
-        [Display(Name = "fecha de inicio")]
-        [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
+        [Display(Name = "Fecha de evaluacion")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public DateTime startDate { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm}")]
+        public DateTime StartDate { get; set; }
 
-        [Display(Name = "fecha de finalizacion")]
-        [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
+        [Display(Name = "Fecha de evaluacion")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public DateTime endDate { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm}")]
+        public DateTime EndDate { get; set; }
 
-        [Display(Name = "tema principal")]
+        [Display(Name = "Tema principal")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public string mainTopic { get; set; }
+        public string MainTopic { get; set; }
 
-        [Display(Name = "organizador")]
+        [Display(Name = "Organizador")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public string organizer { get; set; }
+        public string Organizer { get; set; }
 
-        [Display(Name = "estado (Activo/Finalizado)")]
+        [Display(Name = "Sstado (Activo/Finalizado)")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 30 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public string status { get; set; }
+        public string Status { get; set; }
      }
 }

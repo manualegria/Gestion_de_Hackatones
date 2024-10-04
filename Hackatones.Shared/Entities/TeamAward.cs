@@ -20,7 +20,6 @@ namespace Hackatones.Shared.Entities
 
         [JsonIgnore]
         public Award Awards { get; set; }  
-        
         public int AwardId { get; set; }    
     }
 }

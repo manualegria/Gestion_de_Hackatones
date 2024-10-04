@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hackatones.Shered.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,11 +13,9 @@ namespace Hackatones.Shared.Entities
     {
         public int id {  get; set; }
 
-
         [JsonIgnore]
         public Mentor Mentors { get; set; }
         public int MentorId { get; set; }
-
 
         [JsonIgnore]
         public Hackaton Hackatons { get; set; }

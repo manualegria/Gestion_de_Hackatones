@@ -9,34 +9,32 @@ namespace Hackatones.Shered.Entities
 {
     public class Mentor
 	{	
-		[Display(Name = "identificador de mentor")]
-        [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
-        [Required(ErrorMessage = "El {0} es obligatorio")]
-        public int idMentor { get; set; }
+		
+        public int Id { get; set; }
 
-        [Display(Name = "nombre mentor")]
+        [Display(Name = "Nombre del mentor")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        [Display(Name = "apellido mentor")]
+        [Display(Name = "Apellido del mentor")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public string lastName { get; set; }
+        public string LastName { get; set; }
 
-        [Display(Name = "correo mentor")]
+        [Display(Name = "Correo del mentor")]
 		[MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
 		[Required(ErrorMessage = "El {0} es obligatorio")]
-		public string email { get; set; }
+		public string Email { get; set; }
 
-        [Display(Name = "telefono mentor")]
+        [Display(Name = "Telefonodel  mentor")]
         [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public string phone { get; set; }
+        public string Phone { get; set; }
 
-        [Display(Name = "especialidad mentor")]
+        [Display(Name = "Especialidad del mentor")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public string specialty { get; set; }
+        public string Epecialty { get; set; }
     }
 }
