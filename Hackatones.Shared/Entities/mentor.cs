@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hackatones.Shered.Entities
 {
-    public class mentor
+    public class Mentor
 	{	
 		[Display(Name = "identificador de mentor")]
         [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
