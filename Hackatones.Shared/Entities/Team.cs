@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hackatones.Shared.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -32,9 +33,11 @@ namespace Hackatones.Shered.Entities
         [Required(ErrorMessage = "El {0} es obligatorio")]
         public int numberMembers { get; set; }
 
-        [JsonIgnore]
-        public Team Teams { get; set; }
-        public int TeamId { get; set; }
+        public ICollection<TeamMentor> TeamMentors { get; set; }
+        public ICollection<TeamAward> TeamAward { get; set; }
+        public ICollection<TeamParticipant> TeamParticipants { get; set; }
+
+
 
     }
 }
