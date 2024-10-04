@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hackatones.Shered.Entities
 {
-	public team
+	public class team
 	{
         [Display(Name = "identificador equipo")]
         [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]

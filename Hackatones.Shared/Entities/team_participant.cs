@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hackatones.Shered.Entities
 {
-	public team_participant
+	public class team_participant
 	{
         //Foranea equipo
 		[Display(Name = "identificador equipo")]
