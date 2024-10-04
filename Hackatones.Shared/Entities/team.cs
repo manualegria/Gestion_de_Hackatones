@@ -9,15 +9,30 @@ namespace Gestion_de_Hackatones.Shered.Entities
 {
 	public team
 	{
-		public string Id_team
+        [Display(Name = "identificador equipo")]
+        [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
+        [Required(ErrorMessage = "El {0} es obligatorio")]
+        public int id_team { get; set; }
 
-        public string Id_hackaton
+        [Display(Name = "identificador hackaton")]
+        [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
+        [Required(ErrorMessage = "El {0} es obligatorio")]
+        public string id_hackaton { get; set; }
 
-        public string computer_name
+        [Display(Name = "nombre equipo")]
+        [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
+        [Required(ErrorMessage = "El {0} es obligatorio")]
+        public string team_name { get; set; }
 
-		public DateTime registration_date
+        [Display(Name = "fecha de registro")]
+        [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
+        [Required(ErrorMessage = "El {0} es obligatorio")]
+        public DateTime registration_date { get; set; }
 
-        public string number_members
+        [Display(Name = "numero de miembros del equipo")]
+        [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
+        [Required(ErrorMessage = "El {0} es obligatorio")]
+        public int number_members { get; set; }
 
     }
 }
