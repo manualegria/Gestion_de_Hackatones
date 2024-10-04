@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Hackatones.Shered.Entities
 {
-    public mentor
+    public class Mentor
 	{	
 		[Display(Name = "identificador de mentor")]
         [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public int id_mentor { get; set; }
+        public int idMentor { get; set; }
 
         [Display(Name = "nombre mentor")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
@@ -22,7 +22,7 @@ namespace Hackatones.Shered.Entities
         [Display(Name = "apellido mentor")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public string last name { get; set; }
+        public string lastName { get; set; }
 
         [Display(Name = "correo mentor")]
 		[MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]

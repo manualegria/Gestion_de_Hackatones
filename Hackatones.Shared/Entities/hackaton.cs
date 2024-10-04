@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Hackatones.Shered.Entities
 {
-    public class hackaton
+    public class Hackaton
     {
         [Display(Name = "identificador hackaton")]
         [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public int id_hackaton { get; set; }
+        public int idHackaton { get; set; }
 
         [Display(Name = "nombre hackaton")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
@@ -22,17 +22,17 @@ namespace Hackatones.Shered.Entities
         [Display(Name = "fecha de inicio")]
         [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public DateTime start_date { get; set; }
+        public DateTime startDate { get; set; }
 
         [Display(Name = "fecha de finalizacion")]
         [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public DateTime end_date { get; set; }
+        public DateTime endDate { get; set; }
 
         [Display(Name = "tema principal")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public string main_topic { get; set; }
+        public string mainTopic { get; set; }
 
         [Display(Name = "organizador")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
