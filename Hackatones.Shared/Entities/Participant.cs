@@ -12,7 +12,7 @@ namespace Hackatones.Shered.Entities
 		[Display(Name = "identificador de participante")]
 		[MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
 		[Required(ErrorMessage = "El {0} es obligatorio")]
-		public int id_participant { get; set; }
+		public int idParticipant { get; set; }
 
 		[Display(Name = "nombre participante")]
 		[MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
@@ -22,7 +22,7 @@ namespace Hackatones.Shered.Entities
 		[Display(Name = "apellido participante")]
 		[MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
 		[Required(ErrorMessage = "El {0} es obligatorio")]
-		public string last_name { get; set; }
+		public string lastName { get; set; }
 
         [Display(Name = "correo participante")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
@@ -37,16 +37,16 @@ namespace Hackatones.Shered.Entities
         [Display(Name = "experiencia en desarrollo")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public string development_experience { get; set; }
+        public string developmentExperience { get; set; }
 
         [Display(Name = "experiencia en diseño")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public string experience_design { get; set; }
+        public string experienceDesign { get; set; }
 
         [Display(Name = "experiencia gestion")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public string management_experience { get; set; }
+        public string managementExperience { get; set; }
 	}
 }
