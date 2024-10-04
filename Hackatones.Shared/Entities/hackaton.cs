@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gestion_de_Hackatones.Shered.Entities
+namespace Hackatones.Shered.Entities
 {
     public class hackaton
     {
@@ -40,7 +40,7 @@ namespace Gestion_de_Hackatones.Shered.Entities
         public string organizer { get; set; }
 
         [Display(Name = "estado (Activo/Finalizado)")]
-        [MaxLength(30, ErrorMessage = "El {0}, no puede tener mas de 30 caractere.")]
+        [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 30 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
         public string status { get; set; }
      }

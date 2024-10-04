@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gestion_de_Hackatones.Shered.Entities
+namespace Hackatones.Shered.Entities
 {
 	public team
 	{
@@ -13,11 +13,12 @@ namespace Gestion_de_Hackatones.Shered.Entities
         [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
         public int id_team { get; set; }
-
+        
+        //Foranea de hackaton
         [Display(Name = "identificador hackaton")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public string id_hackaton { get; set; }
+        public string id_hackaton_FK { get; set; }
 
         [Display(Name = "nombre equipo")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
