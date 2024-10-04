@@ -9,42 +9,40 @@ namespace Hackatones.Shered.Entities
 {
     public class Participant
 	{
-		[Display(Name = "identificador de participante")]
-		[MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
-		[Required(ErrorMessage = "El {0} es obligatorio")]
-		public int idParticipant { get; set; }
+		
+		public int Id { get; set; }
 
-		[Display(Name = "nombre participante")]
+		[Display(Name = "Nombre del participante")]
 		[MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
 		[Required(ErrorMessage = "El {0} es obligatorio")]
-		public string name { get; set; }
+		public string Name { get; set; }
 
-		[Display(Name = "apellido participante")]
+		[Display(Name = "Apellido participante")]
 		[MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
 		[Required(ErrorMessage = "El {0} es obligatorio")]
-		public string lastName { get; set; }
+		public string LastName { get; set; }
 
-        [Display(Name = "correo participante")]
+        [Display(Name = "Correo participante")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
-        public string email { get; set; }
+        public string Email { get; set; }
 
-        [Display(Name = "numero celular participante")]
+        [Display(Name = "Numero celular participante")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
         public string phone { get; set; }
 
-        [Display(Name = "experiencia en desarrollo")]
+        [Display(Name = "Experiencia en desarrollo")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
         public string developmentExperience { get; set; }
 
-        [Display(Name = "experiencia en diseño")]
+        [Display(Name = "Experiencia en diseño")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
         public string experienceDesign { get; set; }
 
-        [Display(Name = "experiencia gestion")]
+        [Display(Name = "Experiencia gestion")]
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
         public string managementExperience { get; set; }
