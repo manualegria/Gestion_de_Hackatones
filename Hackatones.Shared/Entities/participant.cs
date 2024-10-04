@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gestion_de_Hackatones.Shered.Entities
+namespace Hackatones.Shered.Entities
 {
     public participant
 	{
-		[Display(Name = "nombre hackaton")]
+		[Display(Name = "identificador de participante")]
 		[MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
 		[Required(ErrorMessage = "El {0} es obligatorio")]
 		public int id_participant { get; set; }
