@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Hackatones.Shared.Entities
 {
-    public class Evaliation
+    public class Evaluation
     {
         public int Id { get; set; }
 
