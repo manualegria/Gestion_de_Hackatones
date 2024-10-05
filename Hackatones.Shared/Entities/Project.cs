@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Hackatones.Shered.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Hackatones.Shared.Entities
@@ -41,5 +43,16 @@ namespace Hackatones.Shared.Entities
         [Display(Name = " direccion URL del proyecto")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
         public string RepositoryUrl { get; set; }
-    }
+
+        [JsonIgnore]
+        public Hackaton Hackatons { get; set; }
+        public int HackatonId { get; set; }
+
+        [JsonIgnore]
+        public Team Teams { get; set; }
+        public int TemsId { get; set; }
+
+        public ICollection<Evaluation> Evaluations { get; set; }
+
+    } 
 }

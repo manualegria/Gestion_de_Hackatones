@@ -4,6 +4,7 @@ using Hackatones.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hackatones.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20241004235122_updateDataBase")]
+    partial class updateDataBase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -181,12 +184,17 @@ namespace Hackatones.API.Migrations
                     b.Property<int>("AwardId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("TeamAwardId")
+                        .HasColumnType("int");
+
                     b.Property<int>("TeamId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AwardId");
+
+                    b.HasIndex("TeamAwardId");
 
                     b.HasIndex("TeamId");
 
@@ -204,12 +212,17 @@ namespace Hackatones.API.Migrations
                     b.Property<int>("MentorId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("TeamAwardId")
+                        .HasColumnType("int");
+
                     b.Property<int>("TeamId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("MentorId");
+
+                    b.HasIndex("TeamAwardId");
 
                     b.HasIndex("TeamId");
 
@@ -250,12 +263,7 @@ namespace Hackatones.API.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("TeamsId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("TeamsId");
 
                     b.ToTable("Hackatons");
                 });
@@ -385,6 +393,9 @@ namespace Hackatones.API.Migrations
                     b.Property<int>("ParticipantId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("TeamAwardId")
+                        .HasColumnType("int");
+
                     b.Property<int>("TeamId")
                         .HasColumnType("int");
 
@@ -396,6 +407,8 @@ namespace Hackatones.API.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ParticipantId");
+
+                    b.HasIndex("TeamAwardId");
 
                     b.HasIndex("TeamId");
 
@@ -422,7 +435,7 @@ namespace Hackatones.API.Migrations
                         .IsRequired();
 
                     b.HasOne("Hackatones.Shared.Entities.Project", "Projects")
-                        .WithMany("Evaluations")
+                        .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -476,6 +489,10 @@ namespace Hackatones.API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Hackatones.Shared.Entities.TeamAward", null)
+                        .WithMany("TeamAwards")
+                        .HasForeignKey("TeamAwardId");
+
                     b.HasOne("Hackatones.Shered.Entities.Team", "Teams")
                         .WithMany("TeamAward")
                         .HasForeignKey("TeamId")
@@ -495,6 +512,10 @@ namespace Hackatones.API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Hackatones.Shared.Entities.TeamAward", null)
+                        .WithMany("TeamMentors")
+                        .HasForeignKey("TeamAwardId");
+
                     b.HasOne("Hackatones.Shered.Entities.Team", "Teams")
                         .WithMany("TeamMentors")
                         .HasForeignKey("TeamId")
@@ -506,24 +527,17 @@ namespace Hackatones.API.Migrations
                     b.Navigation("Teams");
                 });
 
-            modelBuilder.Entity("Hackatones.Shered.Entities.Hackaton", b =>
-                {
-                    b.HasOne("Hackatones.Shered.Entities.Team", "Teams")
-                        .WithMany()
-                        .HasForeignKey("TeamsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Teams");
-                });
-
             modelBuilder.Entity("Hackatones.Shered.Entities.TeamParticipant", b =>
                 {
                     b.HasOne("Hackatones.Shered.Entities.Participant", "Participants")
-                        .WithMany("TeamParticipants")
+                        .WithMany()
                         .HasForeignKey("ParticipantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Hackatones.Shared.Entities.TeamAward", null)
+                        .WithMany("TeamParticipants")
+                        .HasForeignKey("TeamAwardId");
 
                     b.HasOne("Hackatones.Shered.Entities.Team", "Teams")
                         .WithMany("TeamParticipants")
@@ -536,9 +550,13 @@ namespace Hackatones.API.Migrations
                     b.Navigation("Teams");
                 });
 
-            modelBuilder.Entity("Hackatones.Shared.Entities.Project", b =>
+            modelBuilder.Entity("Hackatones.Shared.Entities.TeamAward", b =>
                 {
-                    b.Navigation("Evaluations");
+                    b.Navigation("TeamAwards");
+
+                    b.Navigation("TeamMentors");
+
+                    b.Navigation("TeamParticipants");
                 });
 
             modelBuilder.Entity("Hackatones.Shered.Entities.Hackaton", b =>
@@ -551,11 +569,6 @@ namespace Hackatones.API.Migrations
                     b.Navigation("MentorHackatons");
 
                     b.Navigation("TeamMentors");
-                });
-
-            modelBuilder.Entity("Hackatones.Shered.Entities.Participant", b =>
-                {
-                    b.Navigation("TeamParticipants");
                 });
 
             modelBuilder.Entity("Hackatones.Shered.Entities.Team", b =>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hackatones.Shered.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,6 +21,15 @@ namespace Hackatones.Shared.Entities
 
         [JsonIgnore]
         public Award Awards { get; set; }  
-        public int AwardId { get; set; }    
+        public int AwardId { get; set; }
+
+        [JsonIgnore]
+        public Team Teams { get; set; }
+        public int TeamId { get; set; }
+
+
+       
+       
+
     }
 }
