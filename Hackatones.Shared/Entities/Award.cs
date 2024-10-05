@@ -35,5 +35,8 @@ namespace Hackatones.Shared.Entities
         [JsonIgnore]
         public Hackaton Hackatons { get; set; }
         public int HackatonId { get; set; }
+
+        [JsonIgnore]
+        public ICollection<TeamAward> TeamAwards { get; set; }
     }
 }

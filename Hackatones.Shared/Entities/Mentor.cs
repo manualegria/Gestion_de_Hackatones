@@ -40,9 +40,12 @@ namespace Hackatones.Shered.Entities
         public string Epecialty { get; set; }
 
         [JsonIgnore]
-        public ICollection<TeamMentor> TeamMentors { get; set; }
+        public ICollection<Team> Teams { get; set; }
 
         [JsonIgnore]
         public ICollection<MentorHackaton> MentorHackatons { get; set; }
+
+        [JsonIgnore]
+        public ICollection<Evaluation> Evaluations { get; set; } 
     }
 }

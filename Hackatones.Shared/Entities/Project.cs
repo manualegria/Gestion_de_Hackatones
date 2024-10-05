@@ -50,8 +50,9 @@ namespace Hackatones.Shared.Entities
 
         [JsonIgnore]
         public Team Teams { get; set; }
-        public int TemsId { get; set; }
+        public int TeamId { get; set; }
 
+        [JsonIgnore]
         public ICollection<Evaluation> Evaluations { get; set; }
 
     } 

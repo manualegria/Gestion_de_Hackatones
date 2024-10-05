@@ -21,10 +21,16 @@ namespace Hackatones.API.Data
         public DbSet<TeamParticipant> TeamParticipants { get; set; }
         public DbSet<TeamMentor> TeamMentors { get; set; }
         public DbSet<Hackaton> Hackatons { get; set; }
+        public DbSet<HackatonTeam> HackatonTeams { get; set; }
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             base.OnModelCreating(modelBuilder);
+
+          
         }
     }
 }

@@ -5,7 +5,7 @@
 namespace Hackatones.API.Migrations
 {
     /// <inheritdoc />
-    public partial class refactor : Migration
+    public partial class clear : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -47,40 +47,38 @@ namespace Hackatones.API.Migrations
                 table: "TeamAwards");
 
             migrationBuilder.AddColumn<int>(
-                name: "TeamsId",
-                table: "Hackatons",
+                name: "MentorId",
+                table: "Teams",
                 type: "int",
-                nullable: false,
-                defaultValue: 0);
+                nullable: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Hackatons_TeamsId",
-                table: "Hackatons",
-                column: "TeamsId");
+                name: "IX_Teams_MentorId",
+                table: "Teams",
+                column: "MentorId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Hackatons_Teams_TeamsId",
-                table: "Hackatons",
-                column: "TeamsId",
-                principalTable: "Teams",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                name: "FK_Teams_Mentors_MentorId",
+                table: "Teams",
+                column: "MentorId",
+                principalTable: "Mentors",
+                principalColumn: "Id");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Hackatons_Teams_TeamsId",
-                table: "Hackatons");
+                name: "FK_Teams_Mentors_MentorId",
+                table: "Teams");
 
             migrationBuilder.DropIndex(
-                name: "IX_Hackatons_TeamsId",
-                table: "Hackatons");
+                name: "IX_Teams_MentorId",
+                table: "Teams");
 
             migrationBuilder.DropColumn(
-                name: "TeamsId",
-                table: "Hackatons");
+                name: "MentorId",
+                table: "Teams");
 
             migrationBuilder.AddColumn<int>(
                 name: "TeamAwardId",
