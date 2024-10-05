@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Hackatones.Shered.Entities
@@ -46,5 +47,9 @@ namespace Hackatones.Shered.Entities
         [MaxLength(50, ErrorMessage = "El {0}, no puede tener mas de 50 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
         public string managementExperience { get; set; }
-	}
+
+
+        [JsonIgnore]
+        public ICollection<TeamParticipant> TeamParticipants { get; set; }
+    }
 }

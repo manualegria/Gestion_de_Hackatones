@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Hackatones.Shered.Entities
@@ -38,7 +39,10 @@ namespace Hackatones.Shered.Entities
         [Required(ErrorMessage = "El {0} es obligatorio")]
         public string Epecialty { get; set; }
 
+        [JsonIgnore]
         public ICollection<TeamMentor> TeamMentors { get; set; }
+
+        [JsonIgnore]
         public ICollection<MentorHackaton> MentorHackatons { get; set; }
     }
 }
