@@ -7,12 +7,12 @@ namespace Hackatones.API.Controllers
 {
 
     [ApiController]
-    [Route("api/hackatonteam")]
-    public class HackatonTeamsController : ControllerBase
+    [Route("api/hackaton")]
+    public class HackatonsController : ControllerBase
     {
         private readonly DataContext _context;
 
-        public HackatonTeamsController(DataContext context)
+        public HackatonsController(DataContext context)
         {
             _context = context;
         }
@@ -20,47 +20,47 @@ namespace Hackatones.API.Controllers
         [HttpGet]
         public async Task<ActionResult> Get()
         {
-            return Ok(await _context.HackatonTeams.ToListAsync());
+            return Ok(await _context.Hackatons.ToListAsync());
         }
 
 
         [HttpGet("{id:int}")]
         public async Task<ActionResult> Get(int id)
         {
-            var hackatonteam = await _context.HackatonTeams.FirstOrDefaultAsync(x => x.Id == id);
-            if (hackatonteam == null)
+            var hackaton = await _context.Hackatons.FirstOrDefaultAsync(x => x.Id == id);
+            if (hackaton == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(hackatonteam);
+                return Ok(hackaton);
             }
         }
 
-
         [HttpPost]
-        public async Task<ActionResult> Post(HackatonTeam hackatonteam)
+        public async Task<ActionResult> Post(Hackaton hackaton)
         {
-            _context.Add(hackatonteam);
+            _context.Add(hackaton);
             await _context.SaveChangesAsync();
             return Ok(new
             {
-                message = "Se regristro equipo en hackaton.",
-                data = hackatonteam
+                message = "Hackaton creada.",
+                data = hackaton
             });
         }
 
+
         //Actualizar 
         [HttpPut]
-        public async Task<ActionResult> Put(HackatonTeam hackatonteam)
+        public async Task<ActionResult> Put(Hackaton hackaton)
         {
-            _context.HackatonTeams.Update(hackatonteam);
+            _context.Hackatons.Update(hackaton);
             await _context.SaveChangesAsync();
             return Ok(new
             {
-                message = "Se Actulizo equipo en hackaton.",
-                data = hackatonteam
+                message = "Se Actulizo hackaton.",
+                data = hackaton
             });
         }
 
@@ -69,18 +69,19 @@ namespace Hackatones.API.Controllers
         public async Task<ActionResult> Delete(int id)
         {
 
-            var hackatonteamDelete = await _context.HackatonTeams
+            var hackatonDelete = await _context.Hackatons
                 .Where(x => x.Id == id)
                 .ExecuteDeleteAsync();
 
-            if (hackatonteamDelete == 0)
+            if (hackatonDelete == 0)
             {
-                return NotFound(new { message = "Equipo no encontrado en hackaton." });
+                return NotFound(new { message = "NO se encontrado hackaton." });
             }
             else
             {
-                return Ok(new { message = "Equipo eliminado de la hackaton." });
+                return Ok(new { message = "Se a eliminado la hackaton." });
             }
         }
     }
 }
+//..
