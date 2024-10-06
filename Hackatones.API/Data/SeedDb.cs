@@ -26,11 +26,14 @@ namespace Hackatones.API.Data
             if (!_context.Mentors.Any())
             {
 
-                _context.Mentors.Add(new Mentor { Name = "Pepito" });
-                _context.Mentors.Add(new Mentor { LastName = "Perez" });
-                _context.Mentors.Add(new Mentor { Email = "PepitoPerez@test.com" });
-                _context.Mentors.Add(new Mentor { Phone = "3128341232" });
-                _context.Mentors.Add(new Mentor { Epecialty = "AWS" });
+                _context.Mentors.Add(new Mentor
+                { Name = "Pepito",
+                    LastName = "Perez",
+                    Email = "PepitoPerez@test.com",
+                    Phone = "3128341232",
+                    Epecialty = "AWS"
+                });
+              
    
             }
             await _context.SaveChangesAsync();
