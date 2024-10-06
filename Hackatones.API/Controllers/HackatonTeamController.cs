@@ -53,7 +53,7 @@ namespace Hackatones.API.Controllers
 
         //Actualizar 
         [HttpPut]
-        public async Task<ActionResult> Put(Award hackatonteam)
+        public async Task<ActionResult> Put(HackatonTeam hackatonteam)
         {
             _context.HackatonTeams.Update(hackatonteam);
             await _context.SaveChangesAsync();

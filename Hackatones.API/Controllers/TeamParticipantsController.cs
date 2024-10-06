@@ -1,5 +1,5 @@
 ﻿using Hackatones.API.Data;
-using Hackatones.Shared.Entities;
+using Hackatones.Shered.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

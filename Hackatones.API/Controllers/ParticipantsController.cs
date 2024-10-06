@@ -1,5 +1,5 @@
 ﻿using Hackatones.API.Data;
-using Hackatones.Shared.Entities;
+using Hackatones.Shered.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -41,7 +41,7 @@ namespace Hackatones.API.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> Post(TeamParticipant participant)
+        public async Task<ActionResult> Post(Participant participant)
         {
             _context.Add(participant);
             await _context.SaveChangesAsync();
