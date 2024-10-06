@@ -39,17 +39,7 @@ namespace Hackatones.API.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<ActionResult> Post(Hackaton hackaton)
-        {
-            _context.Add(hackaton);
-            await _context.SaveChangesAsync();
-            return Ok(new
-            {
-                message = "Hackaton creada.",
-                data = hackaton
-            });
-        }
+        
 
         //Actualizar 
         [HttpPut]
