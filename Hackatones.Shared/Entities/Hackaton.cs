@@ -1,5 +1,4 @@
-﻿using Hackatones.Shared.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -43,6 +42,7 @@ namespace Hackatones.Shered.Entities
         [Required(ErrorMessage = "El {0} es obligatorio")]
         public string Status { get; set; }
 
+
         [JsonIgnore]
         public ICollection<MentorHackaton> MentorHackatons { get; set; }
 
@@ -51,4 +51,7 @@ namespace Hackatones.Shered.Entities
 
 
     }
+
+     }
+
 }
