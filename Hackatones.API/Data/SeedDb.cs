@@ -21,7 +21,7 @@ namespace Hackatones.API.Data
             
         }
 
-        public async Task CheckMentorAsync()
+        private async Task CheckMentorAsync()
         {
             if (!_context.Mentors.Any())
             {

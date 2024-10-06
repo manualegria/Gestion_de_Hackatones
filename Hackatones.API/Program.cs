@@ -20,14 +20,15 @@ var app = builder.Build();
 
 SeedData(app);
 
-async void SeedData(WebApplication app)
-{
-    IServiceScopeFactory? scopeFactory = app.Services.GetService<IServiceScopeFactory>();
 
-    using (IServiceScope? scope = scopeFactory!.CreateScope())
+void SeedData(WebApplication app)
+{
+    IServiceScopeFactory? scopedFactory = app.Services.GetService<IServiceScopeFactory>();
+
+    using (IServiceScope? scope = scopedFactory!.CreateScope())
     {
-        SeedDb? service = scope.ServiceProvider.GetService<SeedDb?>();
-        await service!.SeedAsync();
+        SeedDb? service = scope.ServiceProvider.GetService<SeedDb>();
+        service!.SeedAsync().Wait();
     }
 }
 
