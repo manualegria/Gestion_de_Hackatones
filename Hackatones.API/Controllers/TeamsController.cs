@@ -7,7 +7,7 @@ namespace Hackatones.API.Controllers
 {
 
     [ApiController]
-    [Route("api/team")]
+    [Route("api/teams")]
     public class TeamsController : ControllerBase
     {
         private readonly DataContext _context;
