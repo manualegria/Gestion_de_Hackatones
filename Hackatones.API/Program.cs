@@ -48,6 +48,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+
 //Permisos para consumir el api
 app.UseCors(x => x
 
