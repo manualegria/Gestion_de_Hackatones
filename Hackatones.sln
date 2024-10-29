@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackatones.Shared", "Hackatones.Shared\Hackatones.Shared.csproj", "{749BF223-F821-482E-90AC-1DA8DC233AC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackatones.Shared", "Hackatones.Shared\Hackatones.Shared.csproj", "{749BF223-F821-482E-90AC-1DA8DC233AC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackatones.WEB", "Hackatones.WEB\Hackatones.WEB.csproj", "{CF32B23B-1EBD-4186-967B-909E916B431F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackatones.WEB", "Hackatones.WEB\Hackatones.WEB.csproj", "{CF32B23B-1EBD-4186-967B-909E916B431F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackatones.API", "Hackatones.API\Hackatones.API.csproj", "{A98DA481-1853-455A-A9F8-84D4786F6B4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackatones.API", "Hackatones.API\Hackatones.API.csproj", "{A98DA481-1853-455A-A9F8-84D4786F6B4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
