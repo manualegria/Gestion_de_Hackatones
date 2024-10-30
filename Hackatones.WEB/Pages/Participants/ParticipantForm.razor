@@ -1,0 +1,152 @@
+﻿@using Hackatones.Shered.Entities
+
+
+@inject SweetAlertService swal
+@inject NavigationManager navigationManager
+
+<NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation"></NavigationLock>
+<EditForm EditContext="editContext" OnSubmit="OnSubmit">
+    <DataAnnotationsValidator />
+    <div class="mb-3">
+
+        <label>Nombre:</label>
+
+        <div>
+            <InputText width="10" @bind-Value="Participant.Name" />
+            <ValidationMessage For="@(()=>Participant.Name )" />
+
+        </div>
+
+    </div>
+
+    <div class="mb-3">
+        <label>Apellidos:</label>
+
+        <div>
+            <InputText width="10" @bind-Value="Participant.LastName" />
+            <ValidationMessage For="@(()=>Participant.LastName)" />
+
+        </div>
+    </div>
+
+
+    <div class="mb-3">
+        <label>Correo:</label>
+
+
+        <div>
+            <InputText width="10" @bind-Value="Participant.Email" />
+            <ValidationMessage For="@(()=>Participant.Email)" />
+
+        </div>
+
+    </div>
+
+    <div class="mb-3">
+        <label>Telefono:</label>
+
+        <div>
+            <InputText width="10" @bind-Value="Participant.phone" />
+            <ValidationMessage For="@(()=>Participant.phone)" />
+
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label>Experiencia en Desarrollo:</label>
+
+        <div>
+            <InputText width="10" @bind-Value="Participant.developmentExperience" />
+            <ValidationMessage For="@(()=>Participant.developmentExperience)" />
+
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label>Experiencia En Diseño:</label>
+
+        <div>
+            <InputText width="10" @bind-Value="Participant.experienceDesign" />
+            <ValidationMessage For="@(()=>Participant.experienceDesign)" />
+
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label>Experiencia en Gestion:</label>
+
+        <div>
+            <InputText width="10" @bind-Value="Participant.managementExperience" />
+            <ValidationMessage For="@(()=>Participant.managementExperience)" />
+
+        </div>
+    </div>
+
+
+    <button class="btn btn-primary" type="submit">guardar</button>
+    <button class="btn btn-success" onclick="returnaction">regresar</button>
+
+
+
+</EditForm>
+
+
+
+@code {
+    private EditContext editContext = null;
+
+    protected override void OnInitialized()
+    {
+        editContext = new(Participant);
+    }
+
+
+    [EditorRequired]
+    [Parameter]
+    public Participant Participant { get; set; }
+
+
+    [EditorRequired]
+    [Parameter]
+    public EventCallback OnSubmit { get; set; }
+
+    [EditorRequired]
+    [Parameter]
+
+    public EventCallback ReturnAction { get; set; }
+
+
+    public bool FormPostedSuccessfully { get; set; } = false;
+
+    private async Task OnBeforeInternalNavigation(LocationChangingContext context)
+    {
+        var formWasEdited = editContext.IsModified();
+
+        if (!formWasEdited)
+        {
+            return;
+        }
+
+        if (FormPostedSuccessfully)
+        {
+            return;
+        }
+
+        var result = await swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Confirmación",
+                Text = "¿Deseas abandonar la página y perder los cambios?",
+                Icon = SweetAlertIcon.Warning,
+                ShowCancelButton = true
+            });
+
+        var confirm = !string.IsNullOrEmpty(result.Value);
+
+        if (confirm)
+        {
+            return;
+        }
+
+        context.PreventNavigation();
+    }
+}
