@@ -1,0 +1,43 @@
+﻿@page "/award/create"
+@using Hackatones.Shared.Entities
+
+
+@inject IRepository repository
+
+@inject NavigationManager navigationManager
+
+@inject SweetAlertService sweetAlertService
+
+
+
+<h3>Award Create</h3>
+
+<AwardForm @ref="awardForm" Award="Award" OnSubmit="Create" ReturnAction="Return" />
+
+
+
+@code {
+    private Award Award = new();
+    private AwardForm awardForm;
+
+
+
+    private async Task Create()
+    {
+
+        var responseHttp = await repository.PostAsync("/api/award", Award);
+        if (responseHttp.Error)
+        {
+             var message = await responseHttp.GetErrorMessageAsync();
+             await sweetAlertService.FireAsync("Error", message);
+            return;
+        }
+
+        navigationManager.NavigateTo("/awards");
+    }
+
+    private void Return()
+    {
+        navigationManager.NavigateTo("/awards");
+    }
+}
