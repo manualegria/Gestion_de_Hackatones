@@ -1,0 +1,78 @@
+﻿@page "/project/edit/{id:int}"
+@using Hackatones.Shared.Entities
+
+@inject NavigationManager navigationManager
+@inject IRepository repository
+@inject SweetAlertService swal
+
+
+<h3>HackatonEdit</h3>
+
+@if (Project is null)
+{
+    
+    <p>Cargando ...</p>
+
+
+}
+else
+{
+    <ProjectForm @ref="ProjectForm" Project="Project" OnSubmit="Edit" ReturnAction="Return" />
+
+
+
+}
+
+
+
+@code {
+
+    private Project Project;
+    private ProjectForm ProjectForm;
+
+    [Parameter]
+    public int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var responseHTTP = await repository.GetAsync<Project>($"api/project/{Id}");
+
+        if (responseHTTP.Error)
+        {
+            if (responseHTTP.HttpResponseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                navigationManager.NavigateTo("projects");
+            }
+            else
+            {
+                var messageError = await responseHTTP.GetErrorMessageAsync();
+                await swal.FireAsync("Error", messageError, SweetAlertIcon.Error);
+            }
+        }
+        else
+        {
+            Project = responseHTTP.Response;
+        }
+    }
+
+    private async Task Edit()
+    {
+        var responseHTTP = await repository.PutAsync("api/project", Project);
+
+        if (responseHTTP.Error)
+        {
+            var mensajeError = await responseHTTP.GetErrorMessageAsync();
+            await swal.FireAsync("Error", mensajeError, SweetAlertIcon.Error);
+        }
+        else
+        {
+            ProjectForm!.FormPostedSuccessfully = true;
+            navigationManager.NavigateTo("/projects");
+        }
+    }
+
+    private void Return()
+    {
+        navigationManager.NavigateTo("/projects");
+    }
+}
