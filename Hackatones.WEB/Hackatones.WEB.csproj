@@ -23,4 +23,14 @@
     <ProjectReference Include="..\Hackatones.Shared\Hackatones.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\imagen1.jpg" />
+    <None Include="wwwroot\imagen2.png" />
+    <None Include="wwwroot\img\images3.jfif" />
+  </ItemGroup>
+
 </Project>
