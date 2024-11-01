@@ -1,0 +1,34 @@
+﻿@* @page "/evaluation/create"
+@using Hackatones.Shared.Entities
+
+@inject IRepository repository
+@inject NavigationManager navigationManager
+@inject SweetAlertService sweetAlertService
+
+<h3>Participant Create</h3>
+
+<EvaluationtForm @ref="evaluationtForm" Evaluation="evaluationInstance" OnSubmit="Create" ReturnAction="Return" />
+
+@code {
+    private Hackatones.Shared.Entities.Evaluation evaluationInstance = new();
+    private EvaluationtForm evaluationtForm;
+
+    private async Task Create()
+    {
+        var responseHttp = await repository.PostAsync("/api/evaluation", evaluationInstance);
+        if (responseHttp.Error)
+        {
+            var message = await responseHttp.GetErrorMessageAsync();
+            await sweetAlertService.FireAsync("Error", message);
+            return;
+        }
+
+        navigationManager.NavigateTo("/evaluations");
+    }
+
+    private void Return()
+    {
+        navigationManager.NavigateTo("/evaluations");
+    }
+}
+ *@
