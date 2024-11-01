@@ -29,7 +29,6 @@ namespace Hackatones.Shered.Entities
         public DateTime registrationDate { get; set; }
 
         [Display(Name = "Numero de miembros del equipo")]
-        [MaxLength(10, ErrorMessage = "El {0}, no puede tener mas de 10 caractere.")]
         [Required(ErrorMessage = "El {0} es obligatorio")]
         public int numberMembers { get; set; }
 

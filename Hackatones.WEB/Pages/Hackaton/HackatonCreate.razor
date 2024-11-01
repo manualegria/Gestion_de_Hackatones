@@ -1,0 +1,42 @@
+﻿@page "/hackaton/create"
+
+
+@inject IRepository repository
+
+@inject NavigationManager navigationManager
+
+@inject SweetAlertService sweetAlertService
+
+
+
+<h3>Mentor  Create</h3>
+
+<HackatonForm @ref="hackatonForm" Hackaton="Hackaton" OnSubmit="Create" ReturnAction="Return" />
+
+@* <button class="btn btn-secondary" @onclick="Return">Regresar</button> *@
+
+@code {
+    private Hackaton Hackaton = new();
+    private HackatonForm hackatonForm;
+
+
+
+    private async Task Create()
+    {
+
+        var responseHttp = await repository.PostAsync("/api/hackaton", Hackaton);
+        if (responseHttp.Error)
+        {
+             var message = await responseHttp.GetErrorMessageAsync();
+             await sweetAlertService.FireAsync("Error", message);
+            return;
+        }
+
+        navigationManager.NavigateTo("/hackatons");
+    }
+
+    private void Return()
+    {
+        navigationManager.NavigateTo("/hackatons");
+    }
+}

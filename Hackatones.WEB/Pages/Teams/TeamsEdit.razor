@@ -1,0 +1,77 @@
+﻿@page "/teams/edit/{id:int}"
+
+@inject NavigationManager navigationManager
+@inject IRepository repository
+@inject SweetAlertService swal
+
+
+<h3>TeamsEdit</h3>
+
+
+@if (Team is null)
+{
+    
+    <p>Cargando ...</p>
+
+
+}
+else
+{
+    <TeamForm @ref="TeamForm" Team="Team" OnSubmit="Edit" ReturnAction="Return" />
+
+
+
+}
+
+@code {
+
+
+    private Team Team;
+    private TeamForm TeamForm;
+
+    [Parameter]
+    public int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var responseHTTP = await repository.GetAsync<Team>($"api/teams/{Id}");
+
+        if (responseHTTP.Error)
+        {
+            if (responseHTTP.HttpResponseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                navigationManager.NavigateTo("teams");
+            }
+            else
+            {
+                var messageError = await responseHTTP.GetErrorMessageAsync();
+                await swal.FireAsync("Error", messageError, SweetAlertIcon.Error);
+            }
+        }
+        else
+        {
+            Team = responseHTTP.Response;
+        }
+    }
+
+    private async Task Edit()
+    {
+        var responseHTTP = await repository.PutAsync("api/teams", Team);
+
+        if (responseHTTP.Error)
+        {
+            var mensajeError = await responseHTTP.GetErrorMessageAsync();
+            await swal.FireAsync("Error", mensajeError, SweetAlertIcon.Error);
+        }
+        else
+        {
+            TeamForm!.FormPostedSuccessfully = true;
+            navigationManager.NavigateTo("/teams");
+        }
+    }
+
+    private void Return()
+    {
+        navigationManager.NavigateTo("/teams");
+    }
+}

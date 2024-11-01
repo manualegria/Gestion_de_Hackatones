@@ -1,0 +1,144 @@
+﻿@using Hackatones.Shared.Entities
+
+
+@inject SweetAlertService swal
+@inject NavigationManager navigationManager
+
+<NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation"></NavigationLock>
+<EditForm EditContext="editContext" OnSubmit="OnSubmit">
+    <DataAnnotationsValidator />
+    <div class="mb-3">
+
+        <label>Puntaje Invovacion:</label>
+
+        <div>
+            <InputNumber width="10" @bind-Value="Evaluation.InnovationScore" />
+            <ValidationMessage For="@(()=>Evaluation.InnovationScore )" />
+
+        </div>
+
+    </div>
+
+    <div class="mb-3">
+        <label>Puntaje Funcionalidad:</label>
+
+        <div>
+            <InputNumber width="10" @bind-Value="Evaluation.FunctionalityScore" />
+            <ValidationMessage For="@(()=>Evaluation.FunctionalityScore)" />
+
+        </div>
+    </div>
+
+
+    <div class="mb-3">
+        <label>Comentarios:</label>
+
+
+        <div>
+            <InputText width="10" @bind-Value="Evaluation.Comments" />
+            <ValidationMessage For="@(()=>Evaluation.Comments)" />
+
+        </div>
+
+    </div>
+
+    <div class="mb-3">
+        <label>Fecha Evaluacion:</label>
+
+        <div>
+            <InputDate width="10" @bind-Value="Evaluation.EvaluationDate" />
+            <ValidationMessage For="@(()=>Evaluation.EvaluationDate)" />
+
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label>Proyecto:</label>
+
+        <div>
+            <InputNumber width="10" @bind-Value="Evaluation.ProjectId" />
+            <ValidationMessage For="@(()=>Evaluation.ProjectId)" />
+
+        </div>
+    </div>
+
+
+    <div class="mb-3">
+        <label>Mentor:</label>
+
+        <div>
+            <InputNumber width="10" @bind-Value="Evaluation.MentorId" />
+            <ValidationMessage For="@(()=>Evaluation.ProjectId)" />
+
+        </div>
+    </div>
+
+
+
+    <button class="btn btn-primary" type="submit">guardar</button>
+    <button class="btn btn-success" onclick="returnaction">regresar</button>
+
+
+
+</EditForm>
+
+
+
+@code {
+    private EditContext editContext = null;
+
+    protected override void OnInitialized()
+    {
+        editContext = new(Evaluation);
+    }
+
+
+    [EditorRequired]
+    [Parameter]
+    public Evaluation Evaluation { get; set; }
+
+
+    [EditorRequired]
+    [Parameter]
+    public EventCallback OnSubmit { get; set; }
+
+    [EditorRequired]
+    [Parameter]
+
+    public EventCallback ReturnAction { get; set; }
+
+
+    public bool FormPostedSuccessfully { get; set; } = false;
+
+    private async Task OnBeforeInternalNavigation(LocationChangingContext context)
+    {
+        var formWasEdited = editContext.IsModified();
+
+        if (!formWasEdited)
+        {
+            return;
+        }
+
+        if (FormPostedSuccessfully)
+        {
+            return;
+        }
+
+        var result = await swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Confirmación",
+                Text = "¿Deseas abandonar la página y perder los cambios?",
+                Icon = SweetAlertIcon.Warning,
+                ShowCancelButton = true
+            });
+
+        var confirm = !string.IsNullOrEmpty(result.Value);
+
+        if (confirm)
+        {
+            return;
+        }
+
+        context.PreventNavigation();
+    }
+}
